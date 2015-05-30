@@ -5,4 +5,110 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="action_bottom_tag_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:drawablePadding">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textsize_small</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="goods_search_filter_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="goods_search_filter_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textsize_xmiddle</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="my_tool_bar_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textsize_xmiddle</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="personal_gird_layout_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_margin">1dip</item>
+    </style>
+
+    <style name="personal_gird_layout_text_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textsize_xmiddle</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_marginLeft">5dip</item>
+    </style>
+
+    <style name="confirm_order_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">0dip</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="personal_info_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="personal_info_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textSize">@dimen/textsize_xmiddle</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="personal_info_text_value_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textsize_xmiddle</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="comment_check_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textsize_small</item>
+        <item name="android:textColor">@color/gray_alpha</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
 </resources>
