@@ -2,6 +2,9 @@ package com.ktr.app;
 
 import android.app.Application;
 
+/**
+ * ktr
+ */
 public class KtrApp extends Application {
 	
 	private static KtrApp ourInstance = null;
