@@ -4,5 +4,7 @@
     <string name="app_name">ktr-library</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
