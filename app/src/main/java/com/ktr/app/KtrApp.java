@@ -2,6 +2,8 @@ package com.ktr.app;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 /**
  * ktr
  */
@@ -23,5 +25,7 @@ public class KtrApp extends Application {
 		super.onCreate();
 		
 		ourInstance = this;
+
+		Fresco.initialize(this);
 	}
 }
