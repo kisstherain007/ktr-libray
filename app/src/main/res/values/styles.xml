@@ -1,11 +1,50 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/maker_title_color</item>
+        <item name="colorPrimaryDark">@color/maker_title_color</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+        <item name="actionModeShareDrawable">@mipmap/abs__ic_menu_share_holo_dark</item>
     </style>
 
+    <style name="AppTheme.ActionBarStyle" parent="android:Widget.ActionBar">
+        <!-- 半透明背景，需要开启actionbar悬浮 -->
+        <item name="android:background">@color/maker_title_color</item>
+        <item name="android:height">55dp</item>
+    </style>
 
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">#FFFFFF</item>
+    </style>
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+
+        <item name="searchIcon">@mipmap/abs__ic_search</item>
+        <!--
+    Background for the search query section (e.g. EditText)
+    <item name="queryBackground">...</item>
+    Background for the actions section (e.g. voice, submit)
+    <item name="submitBackground">...</item>
+    Close button icon
+    <item name="closeIcon">...</item>
+    Search button icon
+    <item name="searchIcon">...</item>
+    Go/commit button icon
+    <item name="goIcon">...</item>
+    Voice search button icon
+    <item name="voiceIcon">...</item>
+    Commit icon shown in the query suggestion row
+    <item name="commitIcon">...</item>
+    Layout for query suggestion rows
+    <item name="suggestionRowLayout">...</item>
+        -->
+
+    </style>
     <!-- 自定义loading dialog -->
     <style name="loading_dialog" parent="android:Theme.Holo.Light.Dialog">
         <item name="android:windowFrame">@null</item>

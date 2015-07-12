@@ -1,6 +1,53 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context="com.ktr.ui.MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ktr.ui.MainActivity">
+
+    <item
+        android:id="@+id/ab_search"
+        android:orderInCategory="0"
+        android:title="搜索"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/abs__ic_search"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="0"
+        android:title="分享"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/abs__ic_menu_share_holo_dark"/>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="0"
+        android:title="设置"
+        app:showAsAction="never"
+        android:icon="@mipmap/abs__ic_menu_moreoverflow_normal_holo_dark"/>
 </menu>
+
+   <!-- 菜单资源文件必须放在res/menu目录中。菜单资源文件必须使用<menu>标签作为根节点。除了<menu>标签外，还有另外两个标签用于设置菜单项和分组，这两个标签是<item>和<group>。
+    <menu>标签没有任何属性，但可以嵌套在<item>标签中，表示子菜单的形式。不过<item>标签中不能再嵌入<item>标签。
+        1.<item>标签的属性含义如下:
+            Id：表示菜单项的资源ID
+            menuCategory：同种菜单项的种类。该属性可取4个值：container、system、secondary和alternative。通过menuCategroy属性可以控制菜单项的位置。例如将属性设为system，表示该菜单项是系统菜单，应放在其他种类菜单项的后面。
+            orderInCategor:同种类菜单的排列顺序。该属性需要设置一个整数值。例如menuCategory属性值都为system的3个菜单项(item1、item2和item3)。将这3个菜单项的orderInCategory属性值设为3、2、1，那么item3会显示在最前面，而item1会显示在最后面。
+            title：菜单项标题(菜单项显示的文本)
+            titleCondensed：菜单项的短标题。当菜单项标题太长时会显示该属性值
+            icon：菜单项图标资源ID
+            alphabeticShortcut:菜单项的字母快捷键
+            numericShortcut：菜单项的数字快捷键
+            checkable：表示菜单项是否带复选框。该属性可设计为true或false
+            checked：如果菜单项带复选框(checkable属性为true)，该属性表示复选框默认状态是否被选中。可设置的值为true或false
+            visible：菜单项默认状态是否可视
+            enable：菜单项默认状态是否被激活
+            2.<group>标签的属性含义如下：
+                id:表示菜单组的ID
+                menuCategory：与<item>标签的同名属性含义相同。只是作用域为菜单组
+                    orderInCategory：与<item>标签的同名属性含义相同。只是作用域为菜单组
+                        checkableBehavior：设置该组所有菜单项上显示的选择组件(CheckBox或Radio Button)。如果将该属性值设为all，显示CheckBox组件；如果设为single，显示Radio Button组件；如果设为none，显示正常的菜单项(不显示任何选择组件)。要注意的是，Android SDK官方文档在解释该属性时有一个笔误，原文是：
+                        Whether the items are checkable. Valid values: none, all(exclusive/radiobuttons), single(non-exclusive/checkboxes).
+                        相反了，正确应该是
+                        all(non-exclusive/checkboxes),single(exclusive/radiobuttons).
+                        visible：表示当前组中所有菜单项是否显示。该属性可设置的值是true或false
+                        enable：表示当前组中所有菜单项是否被激活。该属性可设置的值是true或false-->
