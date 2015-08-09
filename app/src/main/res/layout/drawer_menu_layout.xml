@@ -3,22 +3,32 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/frsco_img3"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        fresco:roundedCornerRadius="5dp"
-        fresco:roundBottomLeft="false"
-        fresco:roundBottomRight="false"
-        fresco:roundWithOverlayColor="#F0E511"
-        fresco:roundingBorderWidth="5dp"
-        fresco:roundingBorderColor="#FC6853"
-        android:layout_centerHorizontal="true"
-        />
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin_right_large">
+
+        <ImageView
+            android:id="@+id/accout_header_icon_imageView"
+            android:layout_width="@dimen/header_width"
+            android:layout_height="@dimen/header_height"
+            android:src="@mipmap/seller_header_icon"/>
+
+        <TextView
+            android:id="@+id/title_textView"
+            style="@style/drawer_menu_header_text_value_style"
+            android:layout_toRightOf="@id/accout_header_icon_imageView"
+            android:text="kisstherain"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/drawer_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

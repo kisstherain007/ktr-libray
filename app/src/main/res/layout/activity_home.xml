@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ktr.privatemaker.ui.home.HomeActivity">
+    tools:context="com.ktr.privatemaker.ui.HomeActivity">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerlayou"
@@ -20,12 +20,15 @@
 
         <!--DrawerLayout Content-->
         <LinearLayout
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:choiceMode="singleChoice" >
 
-            <include layout="@layout/drawer_menu_layout"/>
+            <fragment
+                android:name="com.ktr.ui.DrawerLeftMenuFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 

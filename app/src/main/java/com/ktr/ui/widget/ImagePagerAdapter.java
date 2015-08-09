@@ -56,6 +56,7 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = holder.imageView = new ImageView(context);
+            holder.imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             view.setTag(holder);
         } else {
             holder = (ViewHolder)view.getTag();

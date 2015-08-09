@@ -11,8 +11,19 @@
     <dimen name="textsize_middle">14sp</dimen>
     <dimen name="textsize_small">12sp</dimen>
     <dimen name="textsize_xsmall">8sp</dimen>
+    <dimen name="textsize_xxsmall">5sp</dimen>
+
+    <dimen name="header_width">72dp</dimen>
+    <dimen name="header_height">72dp</dimen>
+    <dimen name="common_margin_right_xsmall">5dp</dimen>
+    <dimen name="common_margin_right_small">8dp</dimen>
+    <dimen name="common_margin_right_middle">18dp</dimen>
+    <dimen name="common_margin_right_large">28dp</dimen>
+
 
     <dimen name="view_pager_witdh">450dp</dimen>
     <dimen name="view_pager_height">150dp</dimen>
+
+    <dimen name="left_menu_item_height">45dp</dimen>
 
 </resources>

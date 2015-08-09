@@ -1,35 +1,36 @@
 package com.ktr.privatemaker.ui.home;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.LinearLayout;
 
+import com.ktr.baseabstract.adapter.BaseAdapterHelper;
+import com.ktr.baseabstract.adapter.QuickAdapter;
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
+import com.ktr.ui.widget.AutoScrollViewPager;
+import com.ktr.ui.widget.ImagePagerAdapter;
+import com.ktr.utils.ScreenUtil;
 import com.ktr.utils.ViewFinder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class HomeFragment extends AbstractFragment {
 
     ViewFinder viewFinder;
+    AutoScrollViewPager viewPager;
+    GridView home_gridView;
+    List<Integer> datas = new ArrayList<Integer>();
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private List<Integer> imageIdList;
 
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -41,8 +42,6 @@ public class HomeFragment extends AbstractFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -57,34 +56,34 @@ public class HomeFragment extends AbstractFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        imageIdList = new ArrayList<Integer>();
+        imageIdList.add(R.mipmap.back_up_activi_one);
+        imageIdList.add(R.mipmap.back_up_activi_one);
+        imageIdList.add(R.mipmap.back_up_activi_one);
+        imageIdList.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
+        datas.add(R.mipmap.back_up_activi_one);
         viewFinder = new ViewFinder(view);
-    }
+        home_gridView = viewFinder.find(R.id.home_gridView);
+        viewPager = viewFinder.find(R.id.view_pager);
+        viewPager.setAdapter(new ImagePagerAdapter(getActivity(), imageIdList).setInfiniteLoop(true));
+        viewPager.setInterval(2000);
+        viewPager.startAutoScroll();
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        home_gridView.setAdapter(new QuickAdapter<Integer>(getActivity(), R.layout.home_grid_item, datas) {
+            @Override
+            protected void convert(BaseAdapterHelper helper, Integer item) {
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+                helper.getView(R.id.top_content_layout).setLayoutParams(new LinearLayout.LayoutParams(ScreenUtil.getScreenWidth() / 3, ScreenUtil.getScreenWidth() / 3));
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+                helper.setImageResource(R.id.item_center_imageView, item);
+            }
 
-    public interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(Uri uri);
+        });
     }
 
 }
