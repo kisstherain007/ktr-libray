@@ -1,4 +1,4 @@
-package com.ktr.privatemaker.animation;
+package com.ktr.privatemaker.utils.animation;
 
 import android.view.View;
 import android.view.animation.Animation;

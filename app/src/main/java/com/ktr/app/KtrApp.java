@@ -2,7 +2,10 @@ package com.ktr.app;
 
 import android.app.Application;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.ktr.net.vollery.VolleryRequestManager;
 
 /**
  * ktr
@@ -25,6 +28,8 @@ public class KtrApp extends Application {
 		super.onCreate();
 		
 		ourInstance = this;
+
+		VolleryRequestManager.getInstance().init(this);
 
 		Fresco.initialize(this);
 	}
