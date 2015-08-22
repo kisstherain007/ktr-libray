@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
+import com.google.gson.GsonBuilder;
 import com.ktr.baseabstract.adapter.BaseAdapterHelper;
 import com.ktr.baseabstract.adapter.QuickAdapter;
 import com.ktr.ktr_libray.R;
