@@ -1,24 +1,62 @@
 package com.ktr.utils;
 
 
+import android.app.Activity;
+import android.text.Html;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.Objects;
 
 /**
- * 文件名: com.goodwin.finance.util.ViewUtil
- * 作者:  熊杰 Wilson
- * 日期: 14-9-30
- * 时间: 14:28
- * 开发工具: IntelliJ IDEA 12.1.1
- * 开发语言: Java,Android
- * 开发框架:
- * 版本: v0.1
- * <strong>软件中所有与布局相关的工具类</strong>
- * <p></p>
+ *
  */
 public class ViewUtil {
+
+
+    public static float getCenterX(View v) {
+        return (v.getLeft() + v.getRight()) / 2f;
+    }
+
+    public static float getCenterY(View v) {
+        return (v.getTop() + v.getBottom()) / 2f;
+    }
+
+    public static void setupWebView(WebView webview) {
+        webview.setVerticalScrollbarOverlay(true);
+        WebSettings settings = webview.getSettings();
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
+    }
+
+    public static boolean isVisible(View v) {
+        return (v.getVisibility() == View.VISIBLE);
+    }
+
+    public static void setVisible(View v) {
+        setVisibility(v, View.VISIBLE);
+    }
+
+    public static void setInvisible(View v) {
+        setVisibility(v, View.INVISIBLE);
+    }
+
+    public static void setGone(View v) {
+        setVisibility(v, View.GONE);
+    }
+
+    private static void setVisibility(View v, int visibility) {
+        if (v.getVisibility() != visibility) {
+            v.setVisibility(visibility);
+        }
+    }
+
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
