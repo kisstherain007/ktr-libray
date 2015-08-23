@@ -7,6 +7,9 @@ import android.animation.PropertyValuesHolder;
 import android.animation.TimeInterpolator;
 import android.view.View;
 
+/**
+ * Anima tool
+ */
 public final class AnimatorUtils {
 
     public static final String ALPHA = "alpha";
