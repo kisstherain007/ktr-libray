@@ -2,6 +2,7 @@ package com.ktr.privatemaker.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +14,7 @@ import android.view.View;
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractActivity;
 import com.ktr.ui.DrawerLeftMenuFragment;
+import com.ktr.utils.ThemeUtils;
 
 
 public class HomeActivity extends AbstractActivity implements DrawerLeftMenuFragment.OnLeftMenuItemClickListener{
@@ -29,6 +31,24 @@ public class HomeActivity extends AbstractActivity implements DrawerLeftMenuFrag
     }
 
     private void initVew() {
+//        if (Build.VERSION.SDK_INT >= 19) {
+//            ViewGroup drawerRoot = (ViewGroup) findViewById(R.id.layDrawerRoot);
+//            drawerRoot.setPadding(drawerRoot.getPaddingLeft(),
+//                    SystemBarUtils.getStatusBarHeight(this),
+//                    drawerRoot.getPaddingRight(),
+//                    drawerRoot.getBottom());
+//        }
+//        if (Build.VERSION.SDK_INT == 19) {
+//            ViewGroup rootMain = (ViewGroup) findViewById(R.id.layMainRoot);
+//            rootMain.setPadding(rootMain.getPaddingLeft(),
+//                    rootMain.getPaddingTop(),
+//                    rootMain.getPaddingRight(),
+//                    rootMain.getBottom() + SystemBarUtils.getNavigationBarHeight(this));
+//        }
+
+        mToolbar = getToolbar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         homeFragmentManager = new HomeFragmentManager(this);
 
@@ -54,13 +74,14 @@ public class HomeActivity extends AbstractActivity implements DrawerLeftMenuFrag
 
                 switch (title){
                     case "首页":
-                        homeFragmentManager.changeFragmentByCache(HomeFragmentManager.home_tag, R.id.fragment_container_layout);
+                        homeFragmentManager.changeFragmentByCache(HomeFragmentManager.home_tag);
                         break;
                     case "店铺":
                         break;
                     case "发现":
                         break;
                     case "我的":
+                        homeFragmentManager.changeFragmentByCache(HomeFragmentManager.my_tag);
                         break;
                 }
 
@@ -69,7 +90,7 @@ public class HomeActivity extends AbstractActivity implements DrawerLeftMenuFrag
         toggle.syncState();
         drawerLayout.setDrawerListener(toggle);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -8,11 +8,12 @@
         android:name="com.ktr.app.KtrApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppBaseTheme">
+        android:theme="@style/AppTheme">
 
 
         <activity
-            android:name="com.ktr.privatemaker.ui.HomeActivity">
+            android:name="com.ktr.privatemaker.ui.HomeActivity"
+            android:theme="@style/AppTheme.Red">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
