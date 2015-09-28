@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ktr-libray.iml" filepath="$PROJECT_DIR$/ktr-libray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supportcommlibrary/supportcommlibrary.iml" filepath="$PROJECT_DIR$/supportcommlibrary/supportcommlibrary.iml" />
     </modules>
   </component>
 </project>

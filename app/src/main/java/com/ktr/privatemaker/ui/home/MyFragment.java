@@ -49,7 +49,7 @@ public class MyFragment extends AbstractFragment {
 
         setting_listView = (ListView) view.findViewById(R.id.setting_listView);
 
-        setting_listView.setAdapter(new QuickAdapter<String>(getActivity(), R.layout.ktr_listview_item_layout, datas) {
+        setting_listView.setAdapter(new QuickAdapter<String>(getActivity(), R.layout.my_list_item_layout, datas) {
             @Override
             protected void convert(BaseAdapterHelper helper, String item) {
 

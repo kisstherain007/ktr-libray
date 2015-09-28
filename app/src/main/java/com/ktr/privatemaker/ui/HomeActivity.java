@@ -2,7 +2,6 @@ package com.ktr.privatemaker.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,19 +11,18 @@ import android.view.Menu;
 import android.view.View;
 
 import com.ktr.ktr_libray.R;
-import com.ktr.privatemaker.baseabstract.ui.AbstractActivity;
+import com.ktr.privatemaker.baseabstract.ui.BaseActivity;
 import com.ktr.ui.DrawerLeftMenuFragment;
-import com.ktr.utils.ThemeUtils;
 
 
-public class HomeActivity extends AbstractActivity implements DrawerLeftMenuFragment.OnLeftMenuItemClickListener{
+public class HomeActivity extends BaseActivity implements DrawerLeftMenuFragment.OnLeftMenuItemClickListener{
 
     DrawerLayout drawerLayout;
     private ShareActionProvider mShareActionProvider;
     HomeFragmentManager homeFragmentManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initVew();

@@ -9,18 +9,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin_right_small">
 
-        <ImageView
-            android:id="@+id/left_item_icon_imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/guide_home"
-            android:scaleType="centerInside"/>
-
         <TextView
             android:id="@+id/title_textView"
             style="@style/drawer_menu_text_value_style"
-            android:layout_toRightOf="@id/left_item_icon_imageView"
             android:text="@null"/>
     </RelativeLayout>
+
 </LinearLayout>
