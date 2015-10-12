@@ -15,16 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/view_pager">
 
-        <GridView
-            android:id="@+id/home_gridView"
+        <com.ktr.ui.widget.KRecyclerView
+            android:id="@+id/home_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numColumns="3"
-            android:scrollbars="none"
-            android:horizontalSpacing="@dimen/textsize_small"
-            android:verticalSpacing="@dimen/textsize_xmiddle"
-            android:layout_marginLeft="@dimen/textsize_small"
-            android:layout_marginRight="@dimen/textsize_small"/>
+            />
 
     </RelativeLayout>
 

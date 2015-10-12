@@ -1,6 +1,7 @@
 package com.ktr.privatemaker.ui.home;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
 import com.ktr.ui.widget.AutoScrollViewPager;
 import com.ktr.ui.widget.ImagePagerAdapter;
+import com.ktr.ui.widget.KRecyclerAdapter;
+import com.ktr.ui.widget.KRecyclerView;
 import com.ktr.utils.ScreenUtil;
 import com.ktr.utils.ViewFinder;
 
@@ -25,7 +28,8 @@ public class HomeFragment extends AbstractFragment {
 
     ViewFinder viewFinder;
     AutoScrollViewPager viewPager;
-    GridView home_gridView;
+//    GridView home_gridView;
+    KRecyclerView home_recyclerView;
     List<Integer> datas = new ArrayList<Integer>();
 
     private List<Integer> imageIdList;
@@ -69,22 +73,27 @@ public class HomeFragment extends AbstractFragment {
         datas.add(R.mipmap.back_up_activi_one);
         datas.add(R.mipmap.back_up_activi_one);
         viewFinder = new ViewFinder(view);
-        home_gridView = viewFinder.find(R.id.home_gridView);
+//        home_gridView = viewFinder.find(R.id.home_gridView);
         viewPager = viewFinder.find(R.id.view_pager);
         viewPager.setAdapter(new ImagePagerAdapter(getActivity(), imageIdList).setInfiniteLoop(true));
         viewPager.setInterval(2000);
         viewPager.startAutoScroll();
 
-        home_gridView.setAdapter(new QuickAdapter<Integer>(getActivity(), R.layout.home_grid_item, datas) {
-            @Override
-            protected void convert(BaseAdapterHelper helper, Integer item) {
+//        home_gridView.setAdapter(new QuickAdapter<Integer>(getActivity(), R.layout.home_grid_item, datas) {
+//            @Override
+//            protected void convert(BaseAdapterHelper helper, Integer item) {
+//
+//                helper.getView(R.id.top_content_layout).setLayoutParams(new LinearLayout.LayoutParams(ScreenUtil.getScreenWidth() / 3, ScreenUtil.getScreenWidth() / 3));
+//
+//                helper.setImageResource(R.id.item_center_imageView, item);
+//            }
+//        });
 
-                helper.getView(R.id.top_content_layout).setLayoutParams(new LinearLayout.LayoutParams(ScreenUtil.getScreenWidth() / 3, ScreenUtil.getScreenWidth() / 3));
-
-                helper.setImageResource(R.id.item_center_imageView, item);
-            }
-
-        });
+        home_recyclerView = viewFinder.find(R.id.home_recyclerView);
+        KRecyclerAdapter kRecyclerAdapter = new KRecyclerAdapter(this.getActivity());
+        home_recyclerView.setAdapter(kRecyclerAdapter);
+        home_recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        kRecyclerAdapter.refreshAdapter(datas);
     }
 
 }
