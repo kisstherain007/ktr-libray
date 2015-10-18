@@ -7,7 +7,7 @@ import android.util.SparseArray;
 import com.ktr.baseabstract.fragmentmanager.AppFragmentCacheManager;
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.ui.home.HomeFragment;
-import com.ktr.privatemaker.ui.home.MyFragment;
+import com.ktr.privatemaker.ui.my.MyFragment;
 
 /**
  * Created by kisstherain on 2015/7/12.

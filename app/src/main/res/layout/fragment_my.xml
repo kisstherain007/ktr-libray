@@ -2,15 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/divider_item">
 
-    <ListView
-        android:id="@+id/setting_listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <LinearLayout style="@style/comm_layout_style">
+        <TextView style="@style/comm_textView_style" android:text="主题"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edit_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <LinearLayout style="@style/comm_layout_style">
+        <TextView style="@style/comm_textView_style" android:text="主题"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/comm_layout_style">
+        <TextView style="@style/comm_textView_style" android:text="主题"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/comm_layout_style">
+        <TextView style="@style/comm_textView_style" android:text="主题"/>
+    </LinearLayout>
+
 </LinearLayout>
