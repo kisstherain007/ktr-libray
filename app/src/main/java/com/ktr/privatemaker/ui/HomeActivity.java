@@ -75,6 +75,7 @@ public class HomeActivity extends BaseActivity implements DrawerLeftMenuFragment
                         homeFragmentManager.changeFragmentByCache(HomeFragmentManager.home_tag);
                         break;
                     case "店铺":
+                        homeFragmentManager.changeFragmentByCache(HomeFragmentManager.shop_tag);
                         break;
                     case "发现":
                         break;
