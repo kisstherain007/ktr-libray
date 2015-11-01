@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="gap_pics">4dp</dimen>
+
     <!--字体大小-->
     <dimen name="textsize_xxlarge">28sp</dimen>
     <dimen name="textsize_xlarge">22sp</dimen>

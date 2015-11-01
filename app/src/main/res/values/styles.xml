@@ -182,6 +182,13 @@
         <item name="android:textSize">@dimen/textsize_xmiddle</item>
     </style>
 
+    <style name="display_pic_img_style">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@color/black</item>
+    </style>
+
     <!--android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerVertical="true"

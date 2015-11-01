@@ -25,6 +25,7 @@ import com.ktr.baseabstract.adapter.QuickAdapter;
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
 import com.ktr.privatemaker.ui.HomeActivity;
+import com.ktr.ui.widget.DisplayPicsView;
 import com.ktr.utils.ThemeUtils;
 import com.ktr.utils.ToastUtil;
 import com.ktr.utils.provider.user.UserColumns;
@@ -34,6 +35,7 @@ import com.ktr.utils.provider.user.UserSelection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by kisstherain on 2015/9/26.
@@ -47,6 +49,8 @@ public class MyFragment extends AbstractFragment {
     public static final String TAG = MyFragment.class.getSimpleName();
 
     private static final String[] FIRST_NAMES = { "周波", "kisstherain", "18611352192" };
+
+    DisplayPicsView dispaly_pics_view;
 
     public static MyFragment newInstance(){
 
@@ -65,6 +69,39 @@ public class MyFragment extends AbstractFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        dispaly_pics_view = (DisplayPicsView) view.findViewById(R.id.dispaly_pics_view);
+
+        view.findViewById(R.id.theme1_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dispaly_pics_view.setPics(1);
+            }
+        });
+
+        view.findViewById(R.id.theme2_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dispaly_pics_view.setPics(2);
+            }
+        });
+
+        view.findViewById(R.id.theme3_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dispaly_pics_view.setPics(3);
+            }
+        });
+
+        view.findViewById(R.id.theme4_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dispaly_pics_view.setPics(4);
+            }
+        });
 //        datas.add("主题1");
 //        datas.add("主题2");
 //        datas.add("主题3");

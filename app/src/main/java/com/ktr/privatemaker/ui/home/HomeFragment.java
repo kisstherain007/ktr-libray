@@ -47,8 +47,8 @@ public class HomeFragment extends AbstractFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {}
 
-        loaderManager = getLoaderManager();
-        loaderManager.initLoader(0, null, cursorLoaderCallbacks);
+//        loaderManager = getLoaderManager();
+//        loaderManager.initLoader(0, null, cursorLoaderCallbacks);
     }
 
     @Override
@@ -98,24 +98,24 @@ public class HomeFragment extends AbstractFragment {
         kRecyclerAdapter.refreshAdapter(datas);
     }
 
-    android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> cursorLoaderCallbacks = new android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>() {
-
-        @Override
-        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-
-            CursorLoader cursorLoader = new CursorLoader(getActivity());
-
-            return cursorLoader;
-        }
-
-        @Override
-        public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
-        }
-
-        @Override
-        public void onLoaderReset(Loader<Cursor> loader) {
-
-        }
-    };
+//    android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> cursorLoaderCallbacks = new android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>() {
+//
+//        @Override
+//        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+//
+//            CursorLoader cursorLoader = new CursorLoader(getActivity());
+//
+//            return cursorLoader;
+//        }
+//
+//        @Override
+//        public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+//
+//        }
+//
+//        @Override
+//        public void onLoaderReset(Loader<Cursor> loader) {
+//
+//        }
+//    };
 }

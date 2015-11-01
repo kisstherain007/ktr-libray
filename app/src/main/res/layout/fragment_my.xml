@@ -6,20 +6,30 @@
     android:showDividers="middle"
     android:divider="@drawable/divider_item">
 
-    <LinearLayout style="@style/comm_layout_style">
+    <LinearLayout
+        android:id="@+id/theme1_layout"
+        style="@style/comm_layout_style">
         <TextView style="@style/comm_textView_style" android:text="主题"/>
     </LinearLayout>
 
-    <LinearLayout style="@style/comm_layout_style">
+    <LinearLayout
+        android:id="@+id/theme2_layout"
+        style="@style/comm_layout_style">
         <TextView style="@style/comm_textView_style" android:text="主题"/>
     </LinearLayout>
 
-    <LinearLayout style="@style/comm_layout_style">
+    <LinearLayout
+        android:id="@+id/theme3_layout"
+        style="@style/comm_layout_style">
         <TextView style="@style/comm_textView_style" android:text="主题"/>
     </LinearLayout>
 
-    <LinearLayout style="@style/comm_layout_style">
+    <LinearLayout
+        android:id="@+id/theme4_layout"
+        style="@style/comm_layout_style">
         <TextView style="@style/comm_textView_style" android:text="主题"/>
     </LinearLayout>
+
+    <include layout="@layout/display_pics_view_layout"/>
 
 </LinearLayout>
