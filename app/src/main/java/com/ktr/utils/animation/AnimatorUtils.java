@@ -30,6 +30,10 @@ public final class AnimatorUtils {
 
     public static final String TRANSLATION_Z = "translationZ";
 
+    public static final String X = "X";
+
+    public static final String Y = "Y";
+
     public static void reset(View target) {
         target.setRotationX(0f);
         target.setRotationY(0f);
@@ -219,6 +223,14 @@ public final class AnimatorUtils {
 
     public static PropertyValuesHolder ofTranslationY(float... values) {
         return PropertyValuesHolder.ofFloat(TRANSLATION_Y, values);
+    }
+
+    public static PropertyValuesHolder ofX(float... values) {
+        return PropertyValuesHolder.ofFloat(X, values);
+    }
+
+    public static PropertyValuesHolder ofY(float... values) {
+        return PropertyValuesHolder.ofFloat(Y, values);
     }
 
     public static PropertyValuesHolder ofTranslationZ(float... values) {
