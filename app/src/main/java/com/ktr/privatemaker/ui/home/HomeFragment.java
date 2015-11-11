@@ -1,8 +1,10 @@
 package com.ktr.privatemaker.ui.home;
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
+import com.ktr.ui.multiMedia.VideoPlayerActivity;
 import com.ktr.ui.widget.AutoScrollViewPager;
 import com.ktr.ui.widget.ImagePagerAdapter;
 import com.ktr.ui.widget.KRecyclerAdapter;
@@ -96,6 +99,8 @@ public class HomeFragment extends AbstractFragment {
 //        home_recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         home_recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         kRecyclerAdapter.refreshAdapter(datas);
+
+        startActivity(new Intent(getActivity(), VideoPlayerActivity.class));
     }
 
 //    android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> cursorLoaderCallbacks = new android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>() {

@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.ktr.baseabstract.adapter.BaseAdapterHelper;
 import com.ktr.baseabstract.adapter.QuickAdapter;
@@ -45,12 +47,16 @@ public class MyFragment extends AbstractFragment {
 //    ListView setting_listView;
 //    EditText edit_content;
 //    List<String> datas = new ArrayList<>();
-
+//    南昌公共  http://w.ncnews.com.cn:1935/live/nctv4/playlist.m3u8
+//    南昌新闻  http://w.ncnews.com.cn:1935/live/nctv1/playlist.m3u8
+//    南昌咨询  http://w.ncnews.com.cn:1935/live/nctv3/playlist.m3u8
     public static final String TAG = MyFragment.class.getSimpleName();
 
     private static final String[] FIRST_NAMES = { "周波", "kisstherain", "18611352192" };
 
     DisplayPicsView dispaly_pics_view;
+
+    VideoView videoView;
 
     public static MyFragment newInstance(){
 
@@ -102,6 +108,14 @@ public class MyFragment extends AbstractFragment {
                 dispaly_pics_view.setPics(4);
             }
         });
+
+        videoView = (VideoView) view.findViewById(R.id.video_view);
+
+        Uri uri = Uri.parse("http://bcs.duapp.com/dlna-sample/out_MP4_AVC_AAC_320x240_2013761628.mp4?sign=MBO:C09e40adc8851224375a26cf2c6d12a0:7zwy3HtoM%2B5hXB2%2FlJFN6OkWFCs%3D");
+        videoView.setMediaController(new MediaController(getActivity()));
+        videoView.setVideoURI(uri);
+        videoView.start();
+        videoView.requestFocus();
 //        datas.add("主题1");
 //        datas.add("主题2");
 //        datas.add("主题3");

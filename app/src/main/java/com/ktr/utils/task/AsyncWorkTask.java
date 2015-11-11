@@ -237,11 +237,11 @@ public abstract class AsyncWorkTask<Params, Progress, Result>{
         this.taskId = taskId;
     }
 
-//    public WorkTask(String taskId, ITaskManager taskManager) {
-//        this();
-//        this.taskId = taskId;
-//        taskManager.addTask(this);
-//    }
+    public AsyncWorkTask(String taskId, IAsyncWorkTaskManager taskManager) {
+        this();
+        this.taskId = taskId;
+        taskManager.addTask(this);
+    }
 
     /**
      * Creates a new asynchronous task. This constructor must be invoked on the UI thread.

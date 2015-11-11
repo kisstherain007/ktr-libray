@@ -30,6 +30,9 @@
         <TextView style="@style/comm_textView_style" android:text="主题"/>
     </LinearLayout>
 
-    <include layout="@layout/display_pics_view_layout"/>
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 
 </LinearLayout>
