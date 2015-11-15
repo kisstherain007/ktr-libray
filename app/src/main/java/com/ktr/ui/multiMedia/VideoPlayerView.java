@@ -1,6 +1,7 @@
 package com.ktr.ui.multiMedia;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
@@ -35,7 +36,8 @@ public class VideoPlayerView extends MultiMediaView implements IMultiMediaTaskMa
     VideoView mVideoView;
     Context mContext;
     Handler mHandler;
-
+    private Point mAutoBackOriginPos = new Point();
+    private View mDragView;
     public VideoPlayerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
@@ -48,11 +50,57 @@ public class VideoPlayerView extends MultiMediaView implements IMultiMediaTaskMa
 
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
+            return true;
+        }
 
-            return false;
+        @Override
+        public int clampViewPositionHorizontal(View child, int left, int dx) {
+            final int leftBound = getPaddingLeft();
+            final int rightBound = getWidth() - child.getWidth() - leftBound;
+            final int newLeft = Math.min(Math.max(left, leftBound), rightBound);
+            return newLeft;
+        }
+
+        @Override
+        public int clampViewPositionVertical(View child, int top, int dy) {
+            return super.clampViewPositionVertical(child, top, dy);
+        }
+
+        @Override
+        public void onViewReleased(View releasedChild, float xvel, float yvel) {
+            mDragHelper.settleCapturedViewAt(mAutoBackOriginPos.x, mAutoBackOriginPos.y);
+            invalidate();
         }
 
     }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        return mDragHelper.shouldInterceptTouchEvent(event);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        mDragHelper.processTouchEvent(event);
+        return true;
+    }
+
+    @Override
+    public void computeScroll()
+    {
+        if(mDragHelper.continueSettling(true))
+        {
+            invalidate();
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b)
+    {
+        super.onLayout(changed, l, t, r, b);
+
+    }
+
 
     @Override
     public void onViewCreated(View view) {

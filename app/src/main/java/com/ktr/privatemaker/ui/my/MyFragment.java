@@ -56,7 +56,7 @@ public class MyFragment extends AbstractFragment {
 
     DisplayPicsView dispaly_pics_view;
 
-    VideoView videoView;
+//    VideoView videoView;
 
     public static MyFragment newInstance(){
 
@@ -109,13 +109,13 @@ public class MyFragment extends AbstractFragment {
             }
         });
 
-        videoView = (VideoView) view.findViewById(R.id.video_view);
-
-        Uri uri = Uri.parse("http://bcs.duapp.com/dlna-sample/out_MP4_AVC_AAC_320x240_2013761628.mp4?sign=MBO:C09e40adc8851224375a26cf2c6d12a0:7zwy3HtoM%2B5hXB2%2FlJFN6OkWFCs%3D");
-        videoView.setMediaController(new MediaController(getActivity()));
-        videoView.setVideoURI(uri);
-        videoView.start();
-        videoView.requestFocus();
+//        videoView = (VideoView) view.findViewById(R.id.video_view);
+//
+//        Uri uri = Uri.parse("http://bcs.duapp.com/dlna-sample/out_MP4_AVC_AAC_320x240_2013761628.mp4?sign=MBO:C09e40adc8851224375a26cf2c6d12a0:7zwy3HtoM%2B5hXB2%2FlJFN6OkWFCs%3D");
+//        videoView.setMediaController(new MediaController(getActivity()));
+//        videoView.setVideoURI(uri);
+//        videoView.start();
+//        videoView.requestFocus();
 //        datas.add("主题1");
 //        datas.add("主题2");
 //        datas.add("主题3");

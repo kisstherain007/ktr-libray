@@ -18,10 +18,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_player);
         Log.i("ktr:", "onCreate");
         videoLayout = (VideoPlayerView) findViewById(R.id.video_layout);
-
         MultiMediaPlayTask multiMediaPlayTask = new MultiMediaPlayTask();
         multiMediaPlayTask.addPlayUrl(oriVideoUrl);
-
         Log.i("ktr:", "addPlayTask");
         videoLayout.addPlayTask(multiMediaPlayTask);
 

@@ -83,6 +83,9 @@ public class HomeActivity extends BaseActivity implements DrawerLeftMenuFragment
                     case "我的":
                         homeFragmentManager.changeFragmentByCache(HomeFragmentManager.my_tag);
                         break;
+                    case "FUN":
+                        homeFragmentManager.changeFragmentByCache(HomeFragmentManager.fun_tag);
+                        break;
                 }
 
             }

@@ -52,6 +52,7 @@ public class DrawerLeftMenuFragment extends AbstractFragment {
         datas.add("店铺");
         datas.add("发现");
         datas.add("我的");
+        datas.add("FUN");
         drawer_listView = viewFinder.find(R.id.drawer_listView);
 
         drawer_listView.setAdapter(new QuickAdapter<String>(getActivity(), R.layout.ktr_listview_item_layout, datas) {
@@ -69,6 +70,9 @@ public class DrawerLeftMenuFragment extends AbstractFragment {
                         helper.setImageResource(R.id.left_item_icon_imageView, R.mipmap.guide_faxian);
                         break;
                     case "我的":
+                        helper.setImageResource(R.id.left_item_icon_imageView, R.mipmap.guide_account);
+                        break;
+                    case "FUN":
                         helper.setImageResource(R.id.left_item_icon_imageView, R.mipmap.guide_account);
                         break;
                 }
