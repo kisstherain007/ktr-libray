@@ -1,23 +1,31 @@
 package com.ktr.privatemaker.ui.shop;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnticipateInterpolator;
 
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.ui.found.FoundFragment;
 import com.ktr.ui.widget.KtrListView;
 import com.ktr.ui.widget.SlidingTabLayout;
+import com.ktr.utils.animation.AnimatorUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShopFragment extends Fragment {
+
+    private static final String TAG = ShopFragment.class.getSimpleName();
 
     List<Fragment> childFragments = new ArrayList<>();
     String[] titleArr;
@@ -37,21 +45,41 @@ public class ShopFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_shop, container, false);
     }
 
+    AnimatorSet animatorSet;
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        titleArr =  new String[10];
-        for (int i = 0; i < 10; i++){
+        titleArr = new String[10];
+        for (int i = 0; i < 10; i++) {
 
             titleArr[i] = "title" + i;
-            if (i == 0){
 
-                childFragments.add(WebFragment.newInstance());
-            }else{
+            ShopChildFragment shopChildFragment = ShopChildFragment.newInstance();
+            shopChildFragment.setmOnToggleToolbarShownListener(new KtrListView.OnToggleToolbarShownListener() {
+                @Override
+                public void toggleToolbarShown(boolean shown) {
 
-                childFragments.add(ShopChildFragment.newInstance());
-            }
+                    if(slidingTabs.getTranslationY() >= 0 && shown){
+                        return;
+                    }else if (!(slidingTabs.getTranslationY() >= 0) && !shown){
+                        return;
+                    }
+
+                    if (animatorSet != null && animatorSet.isRunning())  return;
+
+                    AnimatorSet animSet = new AnimatorSet();
+                    animatorSet = animSet;
+                    animSet.playSequentially(AnimatorUtils.together(AnimatorUtils.of(
+                            slidingTabs,
+                            shown ? AnimatorUtils.ofTranslationY(-1 * slidingTabs.getHeight(), 0f) : AnimatorUtils.ofTranslationY(0f, -1 * slidingTabs.getHeight())
+                    ).setDuration(150)));
+                    animSet.start();
+                }
+            });
+
+            childFragments.add(shopChildFragment);
         }
 
         slidingTabs = (SlidingTabLayout) view.findViewById(R.id.slidingTabs);
@@ -66,7 +94,7 @@ public class ShopFragment extends Fragment {
 //        slidingTabs.setCurrent(mCurrentPosition);
     }
 
-    class MyViewPagerAdapter extends FragmentPagerAdapter{
+    class MyViewPagerAdapter extends FragmentPagerAdapter {
 
         public MyViewPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -76,14 +104,6 @@ public class ShopFragment extends Fragment {
         public Fragment getItem(int position) {
 
             Fragment fragment = childFragments.get(position);
-//            ShopChildFragment shopChildFragment = (ShopChildFragment) fragment;
-//            if(shopChildFragment.found_listView != null) shopChildFragment.found_listView.setOnToggleToolbarShownListener(new KtrListView.OnToggleToolbarShownListener() {
-//                @Override
-//                public void toggleToolbarShown(boolean shown) {
-//
-//                    slidingTabs.setVisibility(shown ? View.VISIBLE : View.GONE);
-//                }
-//            });
             return fragment;
         }
 
