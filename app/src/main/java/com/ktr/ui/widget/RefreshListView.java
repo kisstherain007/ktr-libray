@@ -13,6 +13,7 @@ import com.ktr.ktr_libray.R;
 /**
  * Created by kisstherain on 2015/10/29.
  */
+@Deprecated
 public class RefreshListView extends ListView implements AbsListView.OnScrollListener{
 
     View headerView;

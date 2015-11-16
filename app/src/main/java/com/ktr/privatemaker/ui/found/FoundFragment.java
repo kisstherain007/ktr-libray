@@ -15,6 +15,7 @@ import com.ktr.baseabstract.adapter.QuickAdapter;
 import com.ktr.ktr_libray.R;
 import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
 import com.ktr.ui.widget.DisplayPicsView;
+import com.ktr.ui.widget.KtrListView;
 import com.ktr.utils.animation.AnimatorUtils;
 import com.ktr.utils.task.AsyncWorkTask;
 import com.ktr.utils.task.TaskException;
@@ -29,7 +30,7 @@ public class FoundFragment extends AbstractFragment {
 
     public static final String TAG = FoundFragment.class.getSimpleName();
 
-    ListView found_listView;
+    public KtrListView found_listView;
 
     List<FoundEntity> dataList = new ArrayList<>();
 
@@ -53,7 +54,7 @@ public class FoundFragment extends AbstractFragment {
 
         initData();
 
-        found_listView = (ListView) view.findViewById(R.id.found_listView);
+        found_listView = (KtrListView) view.findViewById(R.id.found_listView);
     }
 
     private void initData() {

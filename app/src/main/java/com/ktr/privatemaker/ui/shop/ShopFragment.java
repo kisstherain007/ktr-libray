@@ -1,115 +1,100 @@
 package com.ktr.privatemaker.ui.shop;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ktr.ktr_libray.R;
+import com.ktr.privatemaker.ui.found.FoundFragment;
+import com.ktr.ui.widget.KtrListView;
+import com.ktr.ui.widget.SlidingTabLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ShopFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ShopFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    List<Fragment> childFragments = new ArrayList<>();
+    String[] titleArr;
 
-    private OnFragmentInteractionListener mListener;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShopFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, String param2) {
-        ShopFragment fragment = new ShopFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    SlidingTabLayout slidingTabs;
+    ViewPager viewPager;
+    MyViewPagerAdapter mViewPagerAdapter;
 
     public static ShopFragment newInstance() {
         ShopFragment fragment = new ShopFragment();
         return fragment;
     }
 
-    public ShopFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_shop, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        titleArr =  new String[10];
+        for (int i = 0; i < 10; i++){
+
+            titleArr[i] = "title" + i;
+            if (i == 0){
+
+                childFragments.add(WebFragment.newInstance());
+            }else{
+
+                childFragments.add(ShopChildFragment.newInstance());
+            }
+        }
+
+        slidingTabs = (SlidingTabLayout) view.findViewById(R.id.slidingTabs);
+        viewPager = (ViewPager) view.findViewById(R.id.pager);
+        mViewPagerAdapter = new MyViewPagerAdapter(getFragmentManager());
+        viewPager.setAdapter(mViewPagerAdapter);
+        slidingTabs.setCustomTabView(R.layout.comm_lay_tab_indicator, android.R.id.text1);
+        slidingTabs.setSelectedIndicatorColors(getResources().getColor(R.color.white));
+        slidingTabs.setDistributeEvenly(true); //是否填充满屏幕的宽度
+        slidingTabs.setViewPager(viewPager);
+//        slidingTabs.setOnPageChangeListener(this);
+//        slidingTabs.setCurrent(mCurrentPosition);
+    }
+
+    class MyViewPagerAdapter extends FragmentPagerAdapter{
+
+        public MyViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            Fragment fragment = childFragments.get(position);
+//            ShopChildFragment shopChildFragment = (ShopChildFragment) fragment;
+//            if(shopChildFragment.found_listView != null) shopChildFragment.found_listView.setOnToggleToolbarShownListener(new KtrListView.OnToggleToolbarShownListener() {
+//                @Override
+//                public void toggleToolbarShown(boolean shown) {
+//
+//                    slidingTabs.setVisibility(shown ? View.VISIBLE : View.GONE);
+//                }
+//            });
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return childFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titleArr[position];
         }
     }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
-
 }
