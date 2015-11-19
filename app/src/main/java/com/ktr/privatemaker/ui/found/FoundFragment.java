@@ -17,6 +17,7 @@ import com.ktr.privatemaker.baseabstract.ui.AbstractFragment;
 import com.ktr.ui.widget.DisplayPicsView;
 import com.ktr.ui.widget.KtrListView;
 import com.ktr.utils.animation.AnimatorUtils;
+import com.ktr.utils.bitmaploader.BitmapLoader;
 import com.ktr.utils.task.AsyncWorkTask;
 import com.ktr.utils.task.TaskException;
 
@@ -104,6 +105,16 @@ public class FoundFragment extends AbstractFragment {
                     displayPicsView.setPics(item.picUrls.length);
                 }
             });
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+
+        if (hidden){
+
+            BitmapLoader.getInstance().clearCache();
         }
     }
 }

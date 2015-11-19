@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.ktr.net.vollery.VolleryRequestManager;
+import com.ktr.utils.bitmaploader.BitmapLoader;
 import com.ktr.utils.db.DataBaseManager;
 import com.ktr.utils.db.table.UserTable;
 
@@ -32,6 +33,7 @@ public class KtrApp extends Application {
 		ourInstance = this;
 
 		VolleryRequestManager.getInstance().init(this);
+		BitmapLoader.newInstance(this);
 
 		Fresco.initialize(this);
 

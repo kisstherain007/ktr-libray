@@ -61,21 +61,24 @@ public class KtrListView extends ListView implements AbsListView.OnScrollListene
             View firstChild = view.getChildAt(0);
 
             if (firstVisibleItem == 0) {
-                if(onToggleToolbarShownListener != null) onToggleToolbarShownListener.toggleToolbarShown(true);
+                if (onToggleToolbarShownListener != null)
+                    onToggleToolbarShownListener.toggleToolbarShown(true);
             } else if (firstVisibleItem > lastFirstVisibleItem) {
-                if(onToggleToolbarShownListener != null) onToggleToolbarShownListener.toggleToolbarShown(false);
+                if (onToggleToolbarShownListener != null)
+                    onToggleToolbarShownListener.toggleToolbarShown(false);
             } else if (firstVisibleItem < lastFirstVisibleItem) {
-                if(onToggleToolbarShownListener != null) onToggleToolbarShownListener.toggleToolbarShown(true);
+                if (onToggleToolbarShownListener != null)
+                    onToggleToolbarShownListener.toggleToolbarShown(true);
             } else {
                 int height = firstChild.getHeight();
                 if (height > Utils.dip2px(200)) {
                     if (lastTop == 0) {
                         lastTop = firstChild.getTop();
-                    }
-                    else {
+                    } else {
                         int diffTop = firstChild.getTop() - lastTop;
                         if (Math.abs(diffTop) >= Utils.dip2px(150)) {
-                            if(onToggleToolbarShownListener != null) onToggleToolbarShownListener.toggleToolbarShown(diffTop > 0);
+                            if (onToggleToolbarShownListener != null)
+                                onToggleToolbarShownListener.toggleToolbarShown(diffTop > 0);
                         }
                     }
                 }
@@ -110,7 +113,7 @@ public class KtrListView extends ListView implements AbsListView.OnScrollListene
         this.onToggleToolbarShownListener = onToggleToolbarShownListener;
     }
 
-    public interface OnToggleToolbarShownListener{
+    public interface OnToggleToolbarShownListener {
 
         void toggleToolbarShown(boolean shown);
     }

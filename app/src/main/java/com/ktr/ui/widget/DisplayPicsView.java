@@ -18,6 +18,8 @@ import com.ktr.ktr_libray.R;
 import com.ktr.utils.ScreenUtil;
 import com.ktr.utils.WLogger;
 import com.ktr.utils.animation.AnimatorUtils;
+import com.ktr.utils.bitmaploader.BitmapLoader;
+import com.ktr.utils.bitmaploader.core.TestImageUrl;
 
 /**
  * Created by kisstherain on 2015/10/31.
@@ -224,6 +226,7 @@ public class DisplayPicsView extends ViewGroup {
                 getChildAt(i).setVisibility(View.GONE);
             }else{
                 imgView.setVisibility(View.VISIBLE);
+                BitmapLoader.getInstance().display(imgView, TestImageUrl.imageUrlList.get(i));
             }
         }
     }
