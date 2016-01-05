@@ -17,6 +17,11 @@ import com.ktr.utils.ViewFinder;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action1;
+import rx.functions.Func1;
+
 public class HomeFragment extends AbstractFragment {
 
     ViewFinder viewFinder;
@@ -45,6 +50,47 @@ public class HomeFragment extends AbstractFragment {
 
 //        loaderManager = getLoaderManager();
 //        loaderManager.initLoader(0, null, cursorLoaderCallbacks);
+
+        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+
+            }
+        });
+
+        Subscriber<String> subscriber = new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+        };
+
+        Func1<String, Observable<String>> func1 = new Func1<String, Observable<String>>() {
+            @Override
+            public Observable<String> call(String s) {
+                return null;
+            }
+        };
+
+        Action1<String> action1 = new Action1<String>() {
+            @Override
+            public void call(String s) {
+
+            }
+        };
+
+        observable.subscribe(subscriber);
+        observable.subscribe(action1);
     }
 
     @Override

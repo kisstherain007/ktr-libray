@@ -1,4 +1,4 @@
-package com.ktr.utils.bitmaploader.core;
+package com.ktr.utils.bitmaploader.download;
 
 /**
  * Created by kisstherain on 2015/11/19.

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,7 +14,9 @@ import android.widget.ImageView;
 import com.ktr.app.KtrApp;
 import com.ktr.utils.bitmaploader.core.BitmapCache;
 import com.ktr.utils.bitmaploader.core.BitmapLoaderTask;
-import com.ktr.utils.bitmaploader.core.NetDownloader;
+import com.ktr.utils.bitmaploader.core.BitmapProcess;
+import com.ktr.utils.bitmaploader.core.ImageConfig;
+import com.ktr.utils.bitmaploader.download.NetDownloader;
 import com.ktr.utils.task.TaskException;
 
 import java.lang.ref.WeakReference;
@@ -25,18 +28,23 @@ import java.util.Map;
  */
 public class BitmapLoader {
 
-    private static final String TAG = BitmapLoader.class.getSimpleName();
+    public static final String TAG = BitmapLoader.class.getSimpleName();
 
-    private Map<String, WeakReference<BitmapLoaderTask>> taskCache;
+    private Map<String, WeakReference<ImageLoaderTask>> taskCache;
 
     private BitmapCache mImageCache;// 图片缓存
 
+    private String imageCachePath;// 图片缓存路径
+
     private static BitmapLoader ourInstance;
+
+    private BitmapProcess bitmapProcess;
 
     private Context mContext;
 
-    public static BitmapLoader newInstance(Context context) {
+    public static BitmapLoader newInstance(Context context, String imageCachePath) {
         ourInstance = new BitmapLoader(context);
+        ourInstance.imageCachePath = imageCachePath;
         return ourInstance;
     }
 
@@ -51,16 +59,18 @@ public class BitmapLoader {
 
     private void init() {
 
-        taskCache = new HashMap<String, WeakReference<BitmapLoaderTask>>();
+        taskCache = new HashMap<String, WeakReference<ImageLoaderTask>>();
 
         mContext = KtrApp.getInstance();
         int memCacheSize = 1024 * 1024 * ((ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
         memCacheSize = memCacheSize / 3;
 
+        bitmapProcess = new BitmapProcess(imageCachePath);
+
         mImageCache = new BitmapCache(memCacheSize);
     }
 
-    public void display(ImageView imageView, String url) {
+    public void display(ImageView imageView, String url/*, ImageConfig imageConfig*/) {
 
         if (TextUtils.isEmpty(url)) {
             setImageFaild(imageView);
@@ -80,7 +90,7 @@ public class BitmapLoader {
 
                 Log.i(TAG, "display:" + "net");
                 ImageLoaderTask imageLoaderTask = new ImageLoaderTask(imageView, url);
-                WeakReference<BitmapLoaderTask> taskReference = new WeakReference<BitmapLoaderTask>(imageLoaderTask);
+                WeakReference<ImageLoaderTask> taskReference = new WeakReference<ImageLoaderTask>(imageLoaderTask);
                 taskCache.put(url, taskReference);
                 imageLoaderTask.executrOnImageExecutor();
             }
@@ -91,6 +101,7 @@ public class BitmapLoader {
 
         String mImageUrl;
         ImageView mImageView;
+        boolean isCompleted = false;
 
         public ImageLoaderTask(ImageView imageView, String url) {
             this.mImageView = imageView;
@@ -102,7 +113,12 @@ public class BitmapLoader {
 
             try {
 
+                // 图片下载处理
                 BitmapBytesAndFlag bitmapBytesAndFlag = doDownload(mImageUrl);
+
+                // 图片压缩处理
+//                bitmapProcess.c
+
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapBytesAndFlag.bitmapBytes, 0, bitmapBytesAndFlag.bitmapBytes.length);
                 if (bitmap != null) {
                     mImageCache.addBitmapToMemCache(mImageUrl, bitmap);
@@ -124,14 +140,18 @@ public class BitmapLoader {
         @Override
         protected void onFinished() {
             super.onFinished();
+            isCompleted = true;
             taskCache.remove(mImageUrl);
         }
     }
 
-    public BitmapBytesAndFlag doDownload(String imageUrl) throws Exception {
+    public BitmapBytesAndFlag doDownload(String imageUrl) throws Exception { // 图片下载或本地缓存读取操作
 
         byte[] bitmapBytes = null;
 
+        // 本地缓存读取
+
+        // 网络下载
         bitmapBytes = new NetDownloader().downloadBitmap(imageUrl);
         if (bitmapBytes != null) {
             BitmapBytesAndFlag bitmapBytesAndFlag = new BitmapBytesAndFlag();
@@ -148,31 +168,39 @@ public class BitmapLoader {
 
     public boolean bitmapHasBeenSet(ImageView imageView, String url) {
 
-        if (imageView != null && imageView.getDrawable() != null) {
+        if (imageView != null){
 
-            return false;
-        } else {
+            Drawable drawable = imageView.getDrawable();
 
-            return false;
+            if (drawable != null) {
+
+                return true;
+            } else {
+
+                return false;
+            }
         }
+
+       return false;
     }
 
     public boolean checkTaskExistAndRunning(String url) {
 
-        WeakReference<BitmapLoaderTask> imageLoaderTask = taskCache.get(url);
+        WeakReference<ImageLoaderTask> imageLoaderTask = taskCache.get(url);
 
         if (imageLoaderTask != null) {
 
-            BitmapLoaderTask bitmapLoaderTask = imageLoaderTask.get();
+            ImageLoaderTask oaderTask = imageLoaderTask.get();
 
-            if (bitmapLoaderTask != null) {
+            if (oaderTask != null) {
 
-                if (!bitmapLoaderTask.isCancelled()) {
+                if (!oaderTask.isCancelled() && !oaderTask.isCompleted && oaderTask.mImageUrl.equals(url)) {
 
+                    return true;
                 }
             }
         } else {
-
+            taskCache.remove(url);
         }
 
         return false;

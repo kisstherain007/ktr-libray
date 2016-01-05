@@ -1,4 +1,6 @@
-package com.ktr.utils.bitmaploader.core;
+package com.ktr.utils.bitmaploader.download;
+
+import com.ktr.utils.bitmaploader.download.Downloader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
